@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -26,12 +29,16 @@ public class Contact {
 	private Integer contactId;
 	
 	@Column(name="CONTACT_NAME")
+	@NotEmpty(message = "Name Most be Required")
 	private String contactName;
 	
 	@Column(name="CONTACT_NUMBER")
+	@NotNull(message = "Number is mandetory to field")
 	private Long contactNumber;
 	
 	@Column(name="CONTACT_EMAIL")
+	@NotEmpty(message = "Email is Mandatory")
+	@Email(message = "Enter valid Email id ...")
 	private String contactEmail;
 	
 	@Column(name="ACTIVE_SWITCH")
